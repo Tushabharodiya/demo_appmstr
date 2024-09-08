@@ -1,0 +1,48 @@
+INFO - 2024-06-28 11:57:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-28 11:57:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-28 11:57:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-28 11:57:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-28 11:57:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-28 11:57:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-28 11:57:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-28 11:57:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-28 11:58:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-28 11:58:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-28 11:58:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-28 11:58:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-28 11:58:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-28 11:58:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-28 11:58:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-28 11:58:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-28 11:58:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-28 11:58:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-28 11:58:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-28 11:58:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-28 11:58:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-06-28 11:58:46 --> mysqli_sql_exception: Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'syphnosys_appmaster.android_roi.data_id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by in /home/syphnosys/public_html/appmaster/system/Database/MySQLi/Connection.php:306
+Stack trace:
+#0 /home/syphnosys/public_html/appmaster/system/Database/MySQLi/Connection.php(306): mysqli->query('SELECT *, COUNT...', 0)
+#1 /home/syphnosys/public_html/appmaster/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *, COUNT...')
+#2 /home/syphnosys/public_html/appmaster/system/Database/BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *, COUNT...')
+#3 /home/syphnosys/public_html/appmaster/system/Database/BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *, COUNT...', Array, false)
+#4 /home/syphnosys/public_html/appmaster/app/Models/AndroidRoiModel.php(241): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/syphnosys/public_html/appmaster/app/Controllers/DynamicChart.php(17): App\Models\AndroidRoiModel->getChartData('2024-05-01', '2024-05-31')
+#6 /home/syphnosys/public_html/appmaster/system/CodeIgniter.php(942): App\Controllers\DynamicChart->index()
+#7 /home/syphnosys/public_html/appmaster/system/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DynamicChart))
+#8 /home/syphnosys/public_html/appmaster/system/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /home/syphnosys/public_html/appmaster/index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-06-28 11:58:46 --> Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'syphnosys_appmaster.android_roi.data_id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH/Database/BaseConnection.php on line 647.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *, COUNT(DISTINCT DATE(app_date)) as day_count, SUM(`app_margin`) AS `app_margin`, AVG(`app_roi`) AS `app_roi`
+FROM `android_roi`
+WHERE `app_date` BETWEEN \'2024-05-01\' AND \'2024-05-31\'
+GROUP BY `app_id`
+ORDER BY `app_date` ASC
+ LIMIT 10', [], false)
+ 2 APPPATH/Models/AndroidRoiModel.php(241): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH/Controllers/DynamicChart.php(17): App\Models\AndroidRoiModel->getChartData('2024-05-01', '2024-05-31')
+ 4 SYSTEMPATH/CodeIgniter.php(942): App\Controllers\DynamicChart->index()
+ 5 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DynamicChart))
+ 6 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
